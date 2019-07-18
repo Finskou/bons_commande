@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="css/style.css">
+<div class="container">
+  <main>
+    <table class="table">
+      <tr>
+        <th>commande</th>
+        <th>date de commande</th>
+        <th>date de livraison</th>
+        <th>statut</th>
+      </tr>
+      <?php foreach ($listCde as $key => $value) : ?>
+        <tr>
+          <td><a href="detailCde.php?numcde=<?= $value['orderNumber']; ?>"><?= $value['orderNumber']; ?></a></td>
+          <td><?= $value['orderDate']; ?></td>
+          <td><?= $value['shippedDate']; ?></td>
+          <td><?= $value['status']; ?></td>
+        </tr>
+      <?php endforeach; ?>
+    </table>
+  </main>
+</div>

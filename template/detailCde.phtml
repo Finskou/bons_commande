@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="css/style.css">
+<main>
+  Commande numéro <?= $numCde; ?>
+  <table>
+    <tr>
+      <th>Produit</th>
+      <th>Prix Unitaire</th>
+      <th>Quantité</th>
+      <th>Total</th>
+    </tr>
+    <?php foreach ($listProd as $key => $value) : ?>
+      <tr>
+        <td><?= $value['productName']; ?></a></td>
+        <td><?= $value['priceEach']; ?></td>
+        <td><?= $value['quantityOrdered']; ?></td>
+        <td><?= $value['total']; ?></td>
+      </tr>
+    <?php endforeach; ?>
+  </table>
+
+</main>
+</div>

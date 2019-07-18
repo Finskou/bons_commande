@@ -1,8 +1,10 @@
 <?php
 
+
+$numCde = $_GET['numcde'];
 require('modele/fonctions.php');
-$listCde = listCommande();
+$listProd = listProduit($numCde);
 
 include('utilities/header.phtml');
-include('template/index.phtml');
+include('template/detailCde.phtml');
 include('utilities/footer.phtml');

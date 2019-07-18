@@ -16,32 +16,27 @@ function connect()
 	return $pdo;
 }
 
-//liste de commandes
+//liste des commandes
 function listCommande()
 {
 	$bd = connect();
-	$query = $bd->prepare("SELECT * FROM orders LIMIT 50");
+	$query = $bd->prepare("SELECT * FROM orders");
 
 	$query->execute();
-	$list = $query->fetchAll();
-	return $list;
+	$listCde = $query->fetchAll();
+	return $listCde;
 }
+//liste des produits
+function listProduit($detail)
+{
+	$bd1 = connect();
+	$query1 = $bd1->prepare("SELECT products.productName, priceEach, quantityOrdered, round(priceEach * quantityOrdered) AS total
+		FROM `orderdetails` 
+		INNER JOIN products
+		ON products.productCode = orderdetails.productCode
+		WHERE orderdetails.orderNumber = '$detail'");
 
-// function getProducts()
-// {
-// 	$bd = connect();
-// 	$query = $bd->prepare("SELECT * FROM `products`");
-
-// 	$query->execute();
-// 	$list = $query->fetchAll();
-// 	return $list;
-// };
-
-
-// $sql = "SELECT * FROM `orderdetails` WHERE ";
-// $statement = $bdd->prepare($sql);
-// $statement->execute();
-// $orderdetails = $statement->fetch(\PDO::FETCH_ASSOC);
-
-
-
+	$query1->execute();
+	$listProd = $query1->fetchAll();
+	return $listProd;
+}
